@@ -9,7 +9,7 @@ public class Main {
         if (FileOperation.readFile("src/article/pride-and-prejudice.txt", words)) {
             System.out.println("Total words: " + words.size());
 
-            LinkedListMap<String, Integer> wordMap = new LinkedListMap<>();
+            BSTMap<String, Integer> wordMap = new BSTMap<>();
             for (String word : words) {
                 if (wordMap.contains(word))
                     wordMap.set(word, wordMap.get(word) + 1);
@@ -17,8 +17,14 @@ public class Main {
                     wordMap.add(word, 1);
             }
 
+            int num = 0;
+            if (wordMap.contains("prejudice")) {
+                num = wordMap.remove("prejudice");
+            }
+
             System.out.println("Total different words: " + wordMap.getSize());
             System.out.println("Frequency of PRIDE: " + wordMap.get("pride"));
+            System.out.println("Frequency of PREJUDICE: " + num);
             System.out.println("Frequency of PREJUDICE: " + wordMap.get("prejudice"));
         }
     }
